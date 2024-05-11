@@ -1,0 +1,93 @@
+#header {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family:'Comfortaa';
+}
+
+#title {
+    text-align: center;
+    width: 150px;
+}
+
+#time {
+    font-size: 50px;
+    text-align: center;
+}
+
+#date {
+    font-size: 25px;
+    text-align: center;
+}
+
+/* migliorare navbar per il flex box */
+#navbar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+}
+
+#navbar {
+    list-style-type: none;
+    overflow: hidden;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li{
+    float: right;
+}
+
+#navbar li a{
+    display: block;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+
+#navbar li a:visited,
+#navbar li a:hover,
+#navbar li a:active {
+    color: inherit;
+}
+
+#mainframe {
+    margin: 0 10%;
+}
+
+#earth-container {
+    z-index: 5;
+    border: solid white;
+    border-width: 4px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 4px;
+}
+
+#chartdiv {
+    z-index: 0;
+    width: 100%;
+    height: 400px;
+    max-width: 100%;
+}
+
+#searchBar-container {
+    text-align: center;
+    padding: 20px 0px;
+}
+
+#searchBar {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    border-bottom: 0px solid #aaa; 
+}
+#searchBar:focus {
+    border-bottom: 2px solid #aaa;
+    transition: border-bottom 0.4s;
+}
+

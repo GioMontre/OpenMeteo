@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pyMeteo</title>
+    <link rel="icon" href="./img/earth_icon.png" type="icon"/>
+
+    <link rel="stylesheet" href="./style/style.css">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <script src="./script/globe.js"></script>
+    <script src="./script/clock.js"></script>
+    <!-- Earth map -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    
+</head>
+<body>
+    <div id="header">
+
+        <div id="title">
+            <img src="./img/earth_icon.png" alt="icon" width="100px">
+            <h1>pyMeteo</h1>
+        </div>
+
+        <div id="realTimeClock">
+            <h1 id="time"></h1>
+            <h1 id="date"></h1>
+        </div>
+
+        <div id="navbar-container">
+            <ul id="navbar">
+                <li><a href="#about">API</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="mainframe">
+
+        <div id="earth-container">
+            <div id="chartdiv"></div>
+        </div>
+
+        <div id="searchBar-container">
+            <input id="searchBar" type="text" placeholder="Search the city here..">
+        </div>
+
+        <div class="cities-block">
+            
+        </div>
+        
+    </div>
+</body>
+</html>
