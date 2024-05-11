@@ -104,6 +104,8 @@ am5.ready(function() {
 
 function getWeather(location) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c66e5643579160d1a33ffce684e0b525&units=metric`;
+    // RENDERE PRIVATO, disabilitare questa key, crearne una nuova e farla private
+    // https://blog.gitguardian.com/leaking-secrets-on-github-what-to-do/?utm_source=alerting&utm_medium=email&utm_campaign=abv10AB
     console.log (apiUrl)
 
     // Make a GET request
