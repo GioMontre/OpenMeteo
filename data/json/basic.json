@@ -1,6 +1,6 @@
 {
     "states": {
-        "Afghanistan": ["Kabul", "Kandahar", "Herat", "Mazar-i-Sharif", "Jalalabad"],
+        "Afghanistan": ["Kabul", "Kandahar", "Herat", "Jalalabad"],
         "Albania": ["Tirana", "Durrës", "Vlorë", "Shkodër", "Fier"],
         "Algeria": ["Algiers", "Oran", "Constantine", "Annaba", "Batna"],
         "Andorra": ["Andorra la Vella", "Escaldes-Engordany", "Encamp", "Sant Julia de Lòria", "La Massana"],
@@ -140,9 +140,9 @@
         "United Kingdom": ["London", "Birmingham", "Manchester", "Glasgow", "Liverpool"],
         "Czech Republic": ["Prague", "Brno", "Ostrava", "Plzeň", "Liberec"],
         "Central African Republic": ["Bangui", "Bimbo", "Berberati", "Kaga-Bandoro", "Boali"],
-        "Democratic Republic of the Congo": ["Kinshasa", "Lubumbashi", "Mbuji-Mayi", "Kananga", "Kisangani"],
+        "Democratic Republic of Congo": ["Kinshasa", "Lubumbashi", "Mbuji-Mayi", "Kananga", "Kisangani"],
         "Dominican Republic": ["Santo Domingo", "Santiago de los Caballeros", "Santo Domingo Oeste", "Santo Domingo Este", "San Pedro de Macorís"],
-        "Republic of the Congo": ["Brazzaville", "Pointe-Noire", "Dolisie", "Kayes", "Owando"],
+        "Republic of Congo": ["Brazzaville", "Pointe-Noire", "Dolisie", "Kayes", "Owando"],
         "Palau": ["Ngerulmud", "Koror", "Airai", "Melekeok", "Ngardmau"],
         "Romania": ["Bucharest", "Cluj-Napoca", "Timișoara", "Iași", "Constanța"],
         "Rwanda": ["Kigali", "Butare", "Gitarama", "Ruhengeri", "Gisenyi"],
