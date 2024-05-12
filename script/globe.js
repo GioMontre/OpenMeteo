@@ -60,6 +60,7 @@ async function printCities(inputString, jsonFileURL) {
         const data = await response.json();
         // Estrai lo stato dalla stringa di input
         const state = inputString.trim();
+        console.log(state);
         // Controlla se lo stato è presente nei dati JSON
         if (data.states.hasOwnProperty(state)) {
             // Estrai l'elenco delle città dallo stato corrispondente
@@ -94,12 +95,12 @@ async function printCities(inputString, jsonFileURL) {
     }
 
     // Restituisce il dizionario contenente i dati delle città
-    console.log (json_string)
+    // console.log (json_string)
     return json_string;
 }
 
 
-function displayCities(citiesData) {
+function displayCities(citiesData, countryName) {
     var citiesBlock = document.querySelector('.cities-block');
     
     // Svuota la lista delle città prima di aggiungere le nuove città
@@ -109,30 +110,60 @@ function displayCities(citiesData) {
         if (citiesData.hasOwnProperty(city)) {
             var cityData = citiesData[city];
             
-            var cityListItem = document.createElement('li');
-            cityListItem.classList.add('city');
+            var cityContainer = document.createElement('div');
+            cityContainer.classList.add('city');
             
+
             var cityName = document.createElement('h2');
             cityName.textContent = city;
-            cityListItem.appendChild(cityName);
+            cityContainer.appendChild(cityName);
+
+
+            var cityInfoContainer = document.createElement('div');
+            cityInfoContainer.classList.add('city-info');
+
+
+            var cityWeatherContainer = document.createElement('div');
+            cityWeatherContainer.classList.add('city-weather');
             
-            var cityInfo = document.createElement('p');
-            cityInfo.innerHTML = '<strong>Temperatura:</strong> ' + cityData.weather.main.temp + '°C<br>' +
-                                  '<strong>Descrizione:</strong> ' + cityData.weather.weather[0].description + '<br>' +
-                                  '<strong>Pressione:</strong> ' + cityData.weather.main.pressure + ' hPa<br>' +
-                                  '<strong>Umidità:</strong> ' + cityData.weather.main.humidity + '%<br>' +
-                                  '<strong>Vento:</strong> ' + cityData.weather.wind.speed + ' m/s';
-            cityListItem.appendChild(cityInfo);
+            var temperatureInfo = document.createElement('div');
+            temperatureInfo.innerHTML = '<strong>Temperatura:</strong><br> ' + cityData.weather.main.temp + '°C';
+            cityWeatherContainer.appendChild(temperatureInfo);
             
-            citiesBlock.appendChild(cityListItem);
+            var descriptionInfo = document.createElement('div');
+            descriptionInfo.innerHTML = '<strong>Descrizione:</strong><br> ' + cityData.weather.weather[0].description;
+            cityWeatherContainer.appendChild(descriptionInfo);
+            
+            var pressureInfo = document.createElement('div');
+            pressureInfo.innerHTML = '<strong>Pressione:</strong><br> ' + cityData.weather.main.pressure + ' hPa';
+            cityWeatherContainer.appendChild(pressureInfo);
+            
+            var humidityInfo = document.createElement('div');
+            humidityInfo.innerHTML = '<strong>Umidità:</strong><br> ' + cityData.weather.main.humidity + '%';
+            cityWeatherContainer.appendChild(humidityInfo);
+            
+            var windInfo = document.createElement('div');
+            windInfo.innerHTML = '<strong>Vento:</strong><br> ' + cityData.weather.wind.speed + ' m/s';
+            cityWeatherContainer.appendChild(windInfo);   
+            
+            cityInfoContainer.appendChild(cityWeatherContainer);
+            
+
+            var cityMapContainer = document.createElement('div');
+            cityMapContainer.classList.add('city-map');
+            cityMapContainer.innerHTML = `<iframe loading="lazy" width="100%" height="100%" src="https://maps.google.com/maps?hl=en&amp;q=${city}+${countryName}&amp;ie=UTF8&amp;t=&amp;output=embed&amp;format=jpeg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br/>`;
+            cityInfoContainer.appendChild(cityMapContainer);
+            
+            
+            cityContainer.appendChild(cityInfoContainer);
+            citiesBlock.appendChild(cityContainer);
         }
     }
 }
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
-    dict_city = {};
+
     am5.ready(function() {
 
         // Create root element
@@ -214,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var dict_city_string = await printCities(countryName, "../data/json/basic.json");
             var dict_city_json =  JSON.parse(dict_city_string);
             // Aggiungi l'output alla div city-block
-            displayCities(dict_city_json);
+            displayCities(dict_city_json, countryName);
             var target = dataItem.get("mapPolygon");
             if (target) {
                 var centroid = target.geoCentroid();
