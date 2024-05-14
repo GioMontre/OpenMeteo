@@ -8,5 +8,6 @@ PyMeteo
 
 ## Authors
 
-- Giovanni Montresor
 - Matteo De Donno
+- Giovanni Montresor
+
