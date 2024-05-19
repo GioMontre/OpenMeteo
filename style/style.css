@@ -170,3 +170,48 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.city-weather {
+    align-items: center;
+}
+
+.temperature-line-container {
+    align-self: center;
+    position: relative;
+    width: 88%; /* Regola questa percentuale secondo le tue esigenze */
+    height: 8px; /* Più fine */
+    background: linear-gradient(to right, blue, green, yellow, orange, red);
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.temperature-dot {
+    position: absolute;
+    top: -4px; /* Centra verticalmente la linea */
+    left: 0; /* Posiziona la linea all'inizio del container */
+    width: 1px; /* Larghezza della linea */
+    height: 16px; /* Altezza della linea */
+    background: white; /* Colore della linea */
+    border
+    : black; /* Rimuovi il bordo */
+}
+
+.rain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none; /* Per garantire che la pioggia non interferisca con gli eventi di clic */
+    z-index: 1000; /* Assicurati che sia più alto degli altri elementi */
+}
+
+.rain-container canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.city {
+    position: relative; /* Necessario per l'uso di z-index nei figli */
+}

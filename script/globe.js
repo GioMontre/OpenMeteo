@@ -108,26 +108,36 @@ function displayCities(citiesData, countryName) {
     for (var city in citiesData) {
         if (citiesData.hasOwnProperty(city)) {
             var cityData = citiesData[city];
-            
             var cityContainer = document.createElement('div');
-            cityContainer.classList.add('city');
-            
 
+            cityContainer.classList.add('city');
             var cityName = document.createElement('h2');
             cityName.textContent = city;
             cityContainer.appendChild(cityName);
 
-
             var cityInfoContainer = document.createElement('div');
             cityInfoContainer.classList.add('city-info');
-
-
             var cityWeatherContainer = document.createElement('div');
             cityWeatherContainer.classList.add('city-weather');
-            
+
+            var temperatureContainer = document.createElement('div');
+            temperatureContainer.classList.add('temperature-container');
             var temperatureInfo = document.createElement('div');
-            temperatureInfo.innerHTML = '<strong>Temperatura:</strong><br> ' + cityData.weather.main.temp + '°C';
-            cityWeatherContainer.appendChild(temperatureInfo);
+            temperatureInfo.classList.add('temperature-info');
+            temperatureInfo.innerHTML = '<strong>Temperatura:</strong> ' + cityData.weather.main.temp + '°C';
+            temperatureContainer.appendChild(temperatureInfo);
+            var temperatureLineContainer = document.createElement('div');
+            temperatureLineContainer.classList.add('temperature-line-container');
+            var temperatureDot = document.createElement('div');
+            temperatureDot.classList.add('temperature-dot');
+            var temperature = cityData.weather.main.temp;
+            var minTemp = -5; // Temperatura minima della scala
+            var maxTemp = 45; // Temperatura massima della scala
+            var position = ((temperature - minTemp) / (maxTemp - minTemp)) * 100; // posizione come percentuale sulla scala
+            temperatureDot.style.left = position + '%';
+            temperatureLineContainer.appendChild(temperatureDot);
+            temperatureContainer.appendChild(temperatureLineContainer);
+            cityWeatherContainer.appendChild(temperatureContainer);
             
             var descriptionInfo = document.createElement('div');
             descriptionInfo.innerHTML = '<strong>Descrizione:</strong><br> ' + cityData.weather.weather[0].description;
@@ -143,24 +153,83 @@ function displayCities(citiesData, countryName) {
             
             var windInfo = document.createElement('div');
             windInfo.innerHTML = '<strong>Vento:</strong><br> ' + cityData.weather.wind.speed + ' m/s';
-            cityWeatherContainer.appendChild(windInfo);   
-            
+            cityWeatherContainer.appendChild(windInfo);
+
             cityInfoContainer.appendChild(cityWeatherContainer);
-            
-            
-            //Genera errori, CONTROLLA CONSOLE
-            /*var cityMapContainer = document.createElement('div');
+
+            var cityMapContainer = document.createElement('div');
             cityMapContainer.classList.add('city-map');
             cityMapContainer.innerHTML = `<iframe loading="lazy" width="100%" height="100%" src="https://maps.google.com/maps?hl=en&amp;q=${city}+${countryName}&amp;ie=UTF8&amp;t=&amp;output=embed&amp;format=jpeg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br/>`;
-            cityInfoContainer.appendChild(cityMapContainer);*/
-            
-            
+            cityInfoContainer.appendChild(cityMapContainer);
+
             cityContainer.appendChild(cityInfoContainer);
             citiesBlock.appendChild(cityContainer);
+
+            // Aggiungi l'effetto pioggia se la descrizione è "clear sky"
+            if (cityData.weather.weather[0].description.toLowerCase() === "clear sky") {
+                var rainContainer = document.createElement('div');
+                rainContainer.classList.add('rain-container');
+                cityContainer.appendChild(rainContainer);
+
+                startRainEffect(rainContainer); // Inizia l'effetto pioggia nel container
+            }
         }
     }
 }
 
+// Funzione per iniziare l'effetto pioggia
+function startRainEffect(container) {
+    // Assicurati che il container sia vuoto
+    container.innerHTML = '';
+
+    // Codice per creare l'effetto pioggia leggera
+    var canvas = document.createElement('canvas');
+    canvas.width = container.clientWidth;
+    canvas.height = container.clientHeight;
+    container.appendChild(canvas);
+
+    // Chiama la funzione rainEffect con il canvas come argomento
+    rainEffect(canvas);
+}
+
+// Funzione per creare l'effetto pioggia
+function rainEffect(canvas) {
+    // Codice JavaScript per l'effetto pioggia
+    var ctx = canvas.getContext('2d');
+    var width = canvas.width;
+    var height = canvas.height;
+
+    var drops = [];
+    for (var i = 0; i < 100; i++) {
+        drops.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            length: 20 + Math.random() * 20, // Gocce più lunghe
+            speed: 2 + Math.random() * 3, // Velocità della pioggia
+            opacity: 0.5 + Math.random() * 0.5 // Opacità delle gocce
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.lineWidth = 2;
+        for (var i = 0; i < drops.length; i++) {
+            var drop = drops[i];
+            ctx.beginPath();
+            ctx.moveTo(drop.x, drop.y);
+            ctx.lineTo(drop.x, drop.y + drop.length);
+            ctx.strokeStyle = 'rgba(174,194,224,' + drop.opacity + ')';
+            ctx.stroke();
+            drop.y += drop.speed;
+            if (drop.y > height) {
+                drop.y = -drop.length;
+                drop.x = Math.random() * width; // Riposiziona la goccia a una nuova posizione orizzontale
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 
