@@ -22,7 +22,7 @@ function getWeather(location) {
     return fetch(apiUrl)
         .then(response => {
             if (response.cod == 404) {
-                console.log (response.cod)
+                //LOG ERRORE
                 return null;
             }
             return response.json();
@@ -60,7 +60,6 @@ async function printCities(inputString, jsonFileURL) {
         const data = await response.json();
         // Estrai lo stato dalla stringa di input
         const state = inputString.trim();
-        console.log(state);
         // Controlla se lo stato è presente nei dati JSON
         if (data.states.hasOwnProperty(state)) {
             // Estrai l'elenco delle città dallo stato corrispondente
@@ -148,11 +147,12 @@ function displayCities(citiesData, countryName) {
             
             cityInfoContainer.appendChild(cityWeatherContainer);
             
-
-            var cityMapContainer = document.createElement('div');
+            
+            //Genera errori, CONTROLLA CONSOLE
+            /*var cityMapContainer = document.createElement('div');
             cityMapContainer.classList.add('city-map');
             cityMapContainer.innerHTML = `<iframe loading="lazy" width="100%" height="100%" src="https://maps.google.com/maps?hl=en&amp;q=${city}+${countryName}&amp;ie=UTF8&amp;t=&amp;output=embed&amp;format=jpeg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br/>`;
-            cityInfoContainer.appendChild(cityMapContainer);
+            cityInfoContainer.appendChild(cityMapContainer);*/
             
             
             cityContainer.appendChild(cityInfoContainer);
