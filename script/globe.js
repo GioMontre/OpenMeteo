@@ -122,7 +122,7 @@ function displayCities(citiesData, countryName) {
 
             var temperatureContainer = document.createElement('div');
             temperatureContainer.classList.add('temperature-container');
-            var temperatureInfo = document.createElement('div');
+            var temperatureInfo = document.createElement('dov');
             temperatureInfo.classList.add('temperature-info');
             temperatureInfo.innerHTML = '<strong>Temperatura:</strong> ' + cityData.weather.main.temp + '°C';
             temperatureContainer.appendChild(temperatureInfo);
@@ -163,73 +163,23 @@ function displayCities(citiesData, countryName) {
             cityInfoContainer.appendChild(cityMapContainer);
 
             cityContainer.appendChild(cityInfoContainer);
+
+            // Controlla se il tempo è "clear sky" e aggiungi l'effetto pioggia solo in questo caso
+            if (cityData.weather.weather[0].description.toLowerCase() === "pioggia!!") {
+                rain()
+            }
+            
             citiesBlock.appendChild(cityContainer);
-
-            // Aggiungi l'effetto pioggia se la descrizione è "clear sky"
-            if (cityData.weather.weather[0].description.toLowerCase() === "clear sky") {
-                var rainContainer = document.createElement('div');
-                rainContainer.classList.add('rain-container');
-                cityContainer.appendChild(rainContainer);
-
-                startRainEffect(rainContainer); // Inizia l'effetto pioggia nel container
-            }
         }
     }
 }
 
-// Funzione per iniziare l'effetto pioggia
-function startRainEffect(container) {
-    // Assicurati che il container sia vuoto
-    container.innerHTML = '';
 
-    // Codice per creare l'effetto pioggia leggera
-    var canvas = document.createElement('canvas');
-    canvas.width = container.clientWidth;
-    canvas.height = container.clientHeight;
-    container.appendChild(canvas);
-
-    // Chiama la funzione rainEffect con il canvas come argomento
-    rainEffect(canvas);
+function rain() {
+    console.log ("https://github.com/mubaidr/rainyday.js.git");
 }
 
-// Funzione per creare l'effetto pioggia
-function rainEffect(canvas) {
-    // Codice JavaScript per l'effetto pioggia
-    var ctx = canvas.getContext('2d');
-    var width = canvas.width;
-    var height = canvas.height;
 
-    var drops = [];
-    for (var i = 0; i < 100; i++) {
-        drops.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            length: 20 + Math.random() * 20, // Gocce più lunghe
-            speed: 2 + Math.random() * 3, // Velocità della pioggia
-            opacity: 0.5 + Math.random() * 0.5 // Opacità delle gocce
-        });
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, width, height);
-        ctx.lineWidth = 2;
-        for (var i = 0; i < drops.length; i++) {
-            var drop = drops[i];
-            ctx.beginPath();
-            ctx.moveTo(drop.x, drop.y);
-            ctx.lineTo(drop.x, drop.y + drop.length);
-            ctx.strokeStyle = 'rgba(174,194,224,' + drop.opacity + ')';
-            ctx.stroke();
-            drop.y += drop.speed;
-            if (drop.y > height) {
-                drop.y = -drop.length;
-                drop.x = Math.random() * width; // Riposiziona la goccia a una nuova posizione orizzontale
-            }
-        }
-        requestAnimationFrame(draw);
-    }
-    draw();
-}
 
 document.addEventListener("DOMContentLoaded", function() {
 

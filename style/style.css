@@ -151,6 +151,14 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
     padding: 10px;
 }
 
+.city-weather dov {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
 /* CSS mappa città */
 .city-map {
     flex: 1;
@@ -196,22 +204,20 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
     : black; /* Rimuovi il bordo */
 }
 
-.rain-container {
+.city {
+    position: relative; /* Assicura che .city sia un contenitore relativo */
+}
+
+.city-background {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Ridimensiona l'immagine al 100% della larghezza del contenitore */
+    height: 100%; /* Ridimensiona l'immagine al 100% dell'altezza del contenitore */
+    z-index: -1; /* Assicura che l'immagine sia dietro agli altri contenuti */
+    opacity: 35%;
+}
+
+.city img{
     overflow: hidden;
-    pointer-events: none; /* Per garantire che la pioggia non interferisca con gli eventi di clic */
-    z-index: 1000; /* Assicurati che sia più alto degli altri elementi */
-}
-
-.rain-container canvas {
-    width: 100%;
-    height: 100%;
-}
-
-.city {
-    position: relative; /* Necessario per l'uso di z-index nei figli */
 }
