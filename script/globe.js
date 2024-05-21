@@ -109,8 +109,8 @@ function displayCities(citiesData, countryName) {
         if (citiesData.hasOwnProperty(city)) {
             var cityData = citiesData[city];
             var cityContainer = document.createElement('div');
-
             cityContainer.classList.add('city');
+
             var cityName = document.createElement('h2');
             cityName.textContent = city;
             cityContainer.appendChild(cityName);
@@ -164,9 +164,21 @@ function displayCities(citiesData, countryName) {
 
             cityContainer.appendChild(cityInfoContainer);
 
-            // Controlla se il tempo è "clear sky" e aggiungi l'effetto pioggia solo in questo caso
-            if (cityData.weather.weather[0].description.toLowerCase() === "pioggia!!") {
-                rain()
+            // BACKGROUND
+            if (cityData.weather.weather[0].description.toLowerCase().includes("thunderstorm") || cityData.weather.weather[0].description.toLowerCase().includes("drizzle") ) {
+                thunderstorm(cityContainer);
+            }
+
+            if (cityData.weather.weather[0].description.toLowerCase().includes("rain") || cityData.weather.weather[0].description.toLowerCase().includes("drizzle")) {
+                rain(cityContainer);
+            }
+            
+            if (cityData.weather.weather[0].description.toLowerCase().includes("clouds")) {
+                clouds(cityContainer, cityData.weather.weather[0].description.toLowerCase());
+            }
+            
+            if (cityData.weather.weather[0].description.toLowerCase() === "clear sky") {
+                clearSky(cityContainer);
             }
             
             citiesBlock.appendChild(cityContainer);
@@ -175,11 +187,67 @@ function displayCities(citiesData, countryName) {
 }
 
 
-function rain() {
-    console.log ("https://github.com/mubaidr/rainyday.js.git");
+function thunderstorm(container) {
+    console.log ("https://codepen.io/Nvagelis/pen/yaQGrL");
 }
 
 
+function rain(container) {
+    console.log ("https://github.com/mubaidr/rainyday.js.git");
+}
+
+function clouds(container, data) {
+    var cloudDiv = document.createElement('div');
+    cloudDiv.style.position = 'absolute';
+    cloudDiv.style.top = '0';
+    cloudDiv.style.left = '0';
+    cloudDiv.style.width = '100%';
+    cloudDiv.style.height = '100%';
+    cloudDiv.style.backgroundImage = 'url("../img/cloud.png")';
+    cloudDiv.style.backgroundSize = 'cover';
+    if (data === "broken clouds" || data === "few clouds" || data === "scattered clouds"){
+        cloudDiv.style.opacity = '15%';
+    }   
+    if (data === "overcast clouds"){
+        cloudDiv.style.opacity = '70%';
+    }
+    cloudDiv.style.zIndex = '1';
+    
+    container.style.position = 'relative';
+    container.appendChild(cloudDiv);
+
+    var position = 0;
+    function animateClouds() {
+        position += 0.5;
+        cloudDiv.style.backgroundPosition = position + 'px 0';
+        requestAnimationFrame(animateClouds);
+    }
+    animateClouds();
+}
+
+function clearSky(container) {
+    var cloudDiv = document.createElement('div');
+    cloudDiv.style.position = 'absolute';
+    cloudDiv.style.top = '0';
+    cloudDiv.style.left = '0';
+    cloudDiv.style.width = '100%';
+    cloudDiv.style.height = '100%';
+    cloudDiv.style.backgroundImage = 'url("../img/clearSky.png")';
+    cloudDiv.style.backgroundSize = 'cover';
+    cloudDiv.style.opacity = '15%';
+    cloudDiv.style.zIndex = '1';
+    
+    container.style.position = 'relative';
+    container.appendChild(cloudDiv);
+
+    var position = 0;
+    function animateClouds() {
+        position += 0.5;
+        cloudDiv.style.backgroundPosition = position + 'px 0';
+        requestAnimationFrame(animateClouds);
+    }
+    animateClouds();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 

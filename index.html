@@ -20,13 +20,14 @@
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <!-- Rain-->
     <script src="./script/rainyday.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <div id="header">
 
         <div id="title">
             <img src="./img/earth_icon.png" alt="icon" width="100px">
-            <h1>pyMeteo</h1>
+            <h1>openMeteo</h1>
         </div>
 
         <div id="realTimeClock">
@@ -49,14 +50,30 @@
             <div id="chartdiv"></div>
         </div>
 
-        <div id="searchBar-container">
-            <input id="searchBar" type="text" placeholder="Search the city here..">
+        <div id="mainframe">
+            <form id="searchForm">
+                <div id="searchBar-container">
+                    <input id="searchBar" type="text" placeholder="Search the city here.." required>
+                </div>
+            </form>
         </div>
-
         <div class="cities-block">
             <div class="loading-spinner"></div>
         </div>
         
     </div>
+    <script>
+        const form = document.getElementById("searchForm")
+        const searchBarCity = document.getElementById("searchBar")
+
+        form.addEventListener ("submit", function(e) {
+            e.preventDefault();
+
+            const city = searchBarCity.value;
+            localStorage.setItem("city", city);
+
+            window.location.href = "pages/city.html"
+        })
+    </script>
 </body>
 </html>

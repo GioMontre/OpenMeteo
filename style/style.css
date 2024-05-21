@@ -162,6 +162,7 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
 /* CSS mappa città */
 .city-map {
     flex: 1;
+    z-index: 100;
 }
 
 .loading-spinner {
@@ -191,6 +192,7 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
     background: linear-gradient(to right, blue, green, yellow, orange, red);
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 120%;
 }
 
 .temperature-dot {
