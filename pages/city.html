@@ -11,16 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Rubik+Bubbles&display=swap" rel="stylesheet">
-    <script src="../script/globe.js"></script>
+    <!-- Various scripts -->
     <script src="../script/clock.js"></script>
-    <!-- Earth map -->
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <!-- Rain-->
-    <script src="../script/rainyday.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="../script/city.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
     <div id="header">
@@ -40,46 +34,34 @@
         <div id="navbar-container">
             <ul id="navbar">
                 <li><a href="#about">API</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
             </ul>
         </div>
 
     </div>
 
     <div id="mainframe">
-
-        
-        <div id="mainframe">
-            <form id="searchForm">
-                <div id="searchBar-container">
-                    <input id="searchBar" type="text" placeholder="Search the city here.." required>
-                </div>
-            </form>
+        <form id="searchForm">
+            <div id="searchBar-container">
+                <input id="searchBar" type="text" placeholder="Search the city here.." required>
+            </div>
+        </form>
+        <div id="city-data">
+            <div class="loading-spinner"></div>
         </div>
-        <h2 id="city"></h2>
-        <div class="loading-spinner"></div>
     </div>
 
 
     <script>
         const city = localStorage.getItem("city");
-        document.getElementById("city").textContent = city;
-
-
-
         const form = document.getElementById("searchForm")
         const searchBarCity = document.getElementById("searchBar")
-
         form.addEventListener ("submit", function(e) {
             e.preventDefault();
-
             const city = searchBarCity.value;
             localStorage.setItem("city", city);
-
             window.location.href = "city.html"
         })
-
-
     </script>
 </body>
 </html>

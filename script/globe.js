@@ -165,7 +165,7 @@ function displayCities(citiesData, countryName) {
             cityContainer.appendChild(cityInfoContainer);
 
             // BACKGROUND
-            if (cityData.weather.weather[0].description.toLowerCase().includes("thunderstorm") || cityData.weather.weather[0].description.toLowerCase().includes("drizzle") ) {
+            if (cityData.weather.weather[0].description.toLowerCase().includes("thunderstorm") ) {
                 thunderstorm(cityContainer);
             }
 

@@ -223,3 +223,44 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
 .city img{
     overflow: hidden;
 }
+
+
+
+
+/*city.js*/
+.not-found-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80%; /* Larghezza desiderata */
+    max-width: 400px; /* Larghezza massima per una migliore leggibilità */
+}
+
+
+#city-data {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.section {
+    margin-bottom: 20px;
+}
+#map {
+    height: 400px;
+    width: 100%;
+}
+.chart {
+    width: 100%;
+    height: 300px;
+}
+.bar {
+    fill: steelblue;
+}
+.bar:hover {
+    fill: orange;
+}
+.axis-label {
+    font-size: 14px;
+    font-weight: bold;
+}

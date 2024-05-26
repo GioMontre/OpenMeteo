@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openMeteo</title>
+    <link rel="icon" href="../img/earth_icon.png" type="icon"/>
+    <link rel="stylesheet" href="../style/contact.css">
+    <script src="../script/clock.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div id="title">
+            <a href="../index.html">
+                <img src="../img/earth_icon.png" alt="icon" width="100px">
+            </a>
+            <h1>openMeteo</h1>
+        </div>
+
+        <div id="realTimeClock">
+            <h1 id="time"></h1>
+            <h1 id="date"></h1>
+        </div>
+
+        <div id="navbar-container">
+            <ul id="navbar">
+                <li><a href="#about">API</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="content">
+        <form action="https://api.web3forms.com/submit" class="contact-left" method="post">
+            <div class="contact-left-title">
+                <h2>Contattaci</h2>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="d55de37d-260d-421c-8245-b751d4b9ce4a">
+            <input type="text" name="Nome" placeholder="Nome" class="contact-inputs" required>
+            <input type="email" id="emailInput" name="email" placeholder="Email" class="contact-inputs" required>            
+            <textarea name="message" placeholder="Invia un messaggio" class="contact-inputs"></textarea>
+            <button type="submit">Submit<img src="../img/freccia.png" width="30px"></button>
+        </form>
+    </div>
+</body>
+</html>

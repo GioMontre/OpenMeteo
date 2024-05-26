@@ -1,0 +1,140 @@
+html {
+    font-family:'Comfortaa';
+}
+
+#header {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+}
+
+#title {
+    text-align: center;
+    width: 150px;
+}
+
+#time {
+    font-size: 50px;
+    text-align: center;
+}
+
+#date {
+    font-size: 28px;
+    text-align: center;
+}
+
+/* migliorare navbar per il flex box */
+#navbar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+}
+
+#navbar {
+    list-style-type: none;
+    overflow: hidden;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li{
+    float: right;
+}
+
+#navbar li a{
+    display: block;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+
+#navbar li a:visited,
+#navbar li a:hover,
+#navbar li a:active {
+    color: inherit;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.contact-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.contact-left{
+    display: flex;
+    flex-direction:column;
+    align-items: start;
+    gap: 30px;
+    margin-right: 3%;
+}
+
+.contact-left-title{
+    font-weight: 600;
+    color: #1085b0;
+    font-size: 40px;
+    margin-bottom: 5px;
+    margin-left: 70px;
+}
+
+.contact-left-title hr{
+    border: none;
+    width: 120px;
+    height: 5px;
+    background-color: #1085b0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-inputs{
+    width:400px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding-left:25px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 50px ;
+}
+
+.contact-left textarea{
+    height: 140px;
+    padding-top: 15px;
+    border-radius: 20px;
+}
+.contact-inputs:focus{
+    border: 2px solid #1085b0 ;
+}
+
+.contact-inputs::placeholder{
+    color:#1085b0;
+}
+.contact-left button{
+    display: flex;
+    align-items:center;
+    padding: 15px 30px;
+    font-size: 16px;
+    color:#fff;
+    gap:10px;
+    border:none;
+    border-radius: 15px;
+    background: linear-gradient(to right, #2025ca, #04b3ad);
+    cursor: pointer;
+}
+.contact-left button img{
+    width: 15px;
+}
+.contact-right iframe{
+    max-width: 100%; 
+    margin-top: 100px;
+    height: 800px;
+}
