@@ -1,4 +1,4 @@
-# PyMeteo
+# OpenMeteo
 
 ![Static Badge](https://img.shields.io/badge/Meteo-blue)
 
