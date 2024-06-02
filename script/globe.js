@@ -203,7 +203,7 @@ function clouds(container, data) {
     cloudDiv.style.left = '0';
     cloudDiv.style.width = '100%';
     cloudDiv.style.height = '100%';
-    cloudDiv.style.backgroundImage = 'url("../img/cloud.png")';
+    cloudDiv.style.backgroundImage = 'url("../img/site/cloud.png")';
     cloudDiv.style.backgroundSize = 'cover';
     if (data === "broken clouds" || data === "few clouds" || data === "scattered clouds"){
         cloudDiv.style.opacity = '15%';
@@ -232,7 +232,7 @@ function clearSky(container) {
     cloudDiv.style.left = '0';
     cloudDiv.style.width = '100%';
     cloudDiv.style.height = '100%';
-    cloudDiv.style.backgroundImage = 'url("../img/clearSky.png")';
+    cloudDiv.style.backgroundImage = 'url("../img/site/clearSky.png")';
     cloudDiv.style.backgroundSize = 'cover';
     cloudDiv.style.opacity = '15%';
     cloudDiv.style.zIndex = '1';
