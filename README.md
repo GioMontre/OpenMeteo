@@ -34,20 +34,7 @@ Beck End:
 
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
 **MAIN CITIES OF THE COUNTRY SELECTED:**
-
 
 ![main_cities.png](img/README/main_cities.png)
 
@@ -55,13 +42,11 @@ Beck End:
 
 **CITY DETAILED DATA:**
 
-
 ![detailed_data_1.png](img/README/city_detailed_data_1.png)
 
 ---
 
 **GRAPHS:**
-
 
 ![detailed_data_2.png](img/README/city_detailed_data_2.png)
 
