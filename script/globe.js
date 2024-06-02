@@ -2,7 +2,7 @@
 GLOBO
 */
 function addGeoLocation(city, dict) {
-    const TOKEN = "354fcfd657734f76bc87edf4fd76fc77" //"YOUR_API_KEY";
+    const TOKEN = "YOUR_API_KEY";
     const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${dict.coord.lat}&lon=${dict.coord.lon}&apiKey=${TOKEN}`;
 
     // Restituisci una promessa per la risposta dell'API di reverse geocoding
@@ -15,7 +15,7 @@ function addGeoLocation(city, dict) {
 }
 
 function getWeather(location) {
-    const TOKEN = "c66e5643579160d1a33ffce684e0b525" //"YOUR_API_KEY";
+    const TOKEN = "YOUR_API_KEY";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${TOKEN}&units=metric`;
     // RENDERE PRIVATO, disabilitare questa key, crearne una nuova e farla private
     // https://blog.gitguardian.com/leaking-secrets-on-github-what-to-do/?utm_source=alerting&utm_medium=email&utm_campaign=abv10AB
