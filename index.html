@@ -19,15 +19,13 @@
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <!-- Rain-->
-    <script src="./script/rainyday.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <div id="header">
 
         <div id="title">
-            <img src="./img/site/earth_icon.png" alt="icon" width="100px">
-            <h1>openMeteo</h1>
+            <h1><img src="./img/site/earth_icon.png" alt="icon" width="40px">penMeteo</h1>
         </div>
 
         <div id="realTimeClock">
@@ -35,36 +33,39 @@
             <h1 id="date"></h1>
         </div>
 
-        <div id="navbar-container">
-            <ul id="navbar">
-                <li><a href="#about">API</a></li>
-                <li><a href="./pages/contact.html">Contact</a></li>
-            </ul>
+        <div id="navbar">
+            <div class="navbar-contet">
+                <a href="#about"><h2>API</h2></a></li>
+            </div>
+            <div class="navbar-contet">
+                <a href="./pages/contact.html"><h2>Contact</h2></a></li>
+            </div>
         </div>
 
     </div>
 
     <div id="mainframe">
 
+        <div id="searchBar-container">
+            <form id="searchForm">
+                <input id="searchBar" type="text" placeholder="Search the city here.." required>
+            </form>
+        </div>
+
         <div id="earth-container">
             <div id="chartdiv"></div>
         </div>
 
-        <div id="mainframe">
-            <form id="searchForm">
-                <div id="searchBar-container">
-                    <input id="searchBar" type="text" placeholder="Search the city here.." required>
-                </div>
-            </form>
-        </div>
         <div class="cities-block">
             <div class="loading-spinner"></div>
         </div>
-        
+
     </div>
     <script>
         const form = document.getElementById("searchForm")
         const searchBarCity = document.getElementById("searchBar")
+
+        console.log(searchBarCity);
 
         form.addEventListener ("submit", function(e) {
             e.preventDefault();

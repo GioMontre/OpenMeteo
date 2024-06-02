@@ -2,7 +2,8 @@
 GLOBO
 */
 function addGeoLocation(city, dict) {
-    const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${dict.coord.lat}&lon=${dict.coord.lon}&apiKey=${YOUR_API_KEY}`;
+    const TOKEN = "354fcfd657734f76bc87edf4fd76fc77" //"YOUR_API_KEY";
+    const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${dict.coord.lat}&lon=${dict.coord.lon}&apiKey=${TOKEN}`;
 
     // Restituisci una promessa per la risposta dell'API di reverse geocoding
     return fetch(reverseGeocodingUrl)
@@ -14,7 +15,8 @@ function addGeoLocation(city, dict) {
 }
 
 function getWeather(location) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${YOUR_API_KEY}&units=metric`;
+    const TOKEN = "c66e5643579160d1a33ffce684e0b525" //"YOUR_API_KEY";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${TOKEN}&units=metric`;
     // RENDERE PRIVATO, disabilitare questa key, crearne una nuova e farla private
     // https://blog.gitguardian.com/leaking-secrets-on-github-what-to-do/?utm_source=alerting&utm_medium=email&utm_campaign=abv10AB
 
@@ -143,9 +145,9 @@ function displayCities(citiesData, countryName) {
             descriptionInfo.innerHTML = '<strong>Descrizione:</strong><br> ' + cityData.weather.weather[0].description;
             cityWeatherContainer.appendChild(descriptionInfo);
             
-            var pressureInfo = document.createElement('div');
-            pressureInfo.innerHTML = '<strong>Pressione:</strong><br> ' + cityData.weather.main.pressure + ' hPa';
-            cityWeatherContainer.appendChild(pressureInfo);
+            // var pressureInfo = document.createElement('div');
+            // pressureInfo.innerHTML = '<strong>Pressione:</strong><br> ' + cityData.weather.main.pressure + ' hPa';
+            // cityWeatherContainer.appendChild(pressureInfo); 
             
             var humidityInfo = document.createElement('div');
             humidityInfo.innerHTML = '<strong>Umidità:</strong><br> ' + cityData.weather.main.humidity + '%';
@@ -158,8 +160,8 @@ function displayCities(citiesData, countryName) {
             cityInfoContainer.appendChild(cityWeatherContainer);
 
             var cityMapContainer = document.createElement('div');
-            cityMapContainer.classList.add('city-map');
-            cityMapContainer.innerHTML = `<iframe loading="lazy" width="100%" height="100%" src="https://maps.google.com/maps?hl=en&amp;q=${city}+${countryName}&amp;ie=UTF8&amp;t=&amp;output=embed&amp;format=jpeg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br/>`;
+            cityMapContainer.classList.add('city-map-container');
+            cityMapContainer.innerHTML = `<iframe class="map" 20px" loading="lazy" width="100%" height="100%" src="https://maps.google.com/maps?hl=en&amp;q=${city}+${countryName}&amp;ie=UTF8&amp;t=&amp;output=embed&amp;format=jpeg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br/>`;
             cityInfoContainer.appendChild(cityMapContainer);
 
             cityContainer.appendChild(cityInfoContainer);

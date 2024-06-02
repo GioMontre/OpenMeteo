@@ -1,20 +1,33 @@
 html {
-    font-family:'Comfortaa';
+    font-family: 'Comfortaa', sans-serif;
+    background-color: white;
 }
 
 #header {
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     justify-content: space-around;
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata */
 }
 
 #title {
     text-align: center;
-    width: 150px;
+    width: 300px;
+    margin: auto 0;
+    background-color: #f9f9f9; /* Colore di sfondo per contrasto */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata */
+}
+
+#realTimeClock {
+    width: 200px;
+    margin: auto 0;
 }
 
 #time {
-    font-size: 50px;
     text-align: center;
 }
 
@@ -24,35 +37,26 @@ html {
 }
 
 /* migliorare navbar per il flex box */
-#navbar-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 150px;
-}
-
 #navbar {
-    list-style-type: none;
-    overflow: hidden;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+    margin: auto 0;
+    background-color: #f9f9f9; /* Colore di sfondo per contrasto */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata */
 }
 
-#navbar li{
-    float: right;
+#navbar .navbar-contet {
+    padding: 20px;
 }
 
-#navbar li a{
-    display: block;
-    padding: 10px 10px;
-    text-decoration: none;
-}
-
-#navbar li a:visited,
-#navbar li a:hover,
-#navbar li a:active {
+#navbar .navbar-contet a:visited,
+#navbar .navbar-contet a:hover,
+#navbar .navbar-contet a:active {
     color: inherit;
+    text-decoration: none;
 }
 
 #mainframe {
@@ -60,25 +64,27 @@ html {
 }
 
 #earth-container {
-    z-index: 5;
-    border: solid white;
-    border-width: 4px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 4px;
+    z-index: 5;
+    border-radius: 20px;
+    color: #333333;
+    background-color: #ffffff; /* Colore di sfondo bianco */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata */
 }
 
 /* globo degli stati */
 #chartdiv {
     z-index: 0;
     width: 100%;
-    height: 400px;
+    height: 500px;
     max-width: 100%;
+    margin: 0 auto;
 }
 
 #searchBar-container {
     text-align: center;
     padding: 20px 0px;
+    background-color: none;
 }
 
 /* barra di ricerca delle città */
@@ -88,29 +94,29 @@ html {
     width: 100%;
     height: 50px;
     text-align: center;
-    border-bottom: 0px solid #aaa; 
+    border-bottom: 0px solid #3498db; 
+
 }
 
-/* animazione per la barra di ricerca */
 #searchBar:focus {
-    border-bottom: 2px solid #aaa;
+    border-bottom: 2px solid #3498db;
     transition: border-bottom 0.4s;
 }
 
 .cities-block {
-    list-style: none;
     padding: 0;
-    margin: 0;
+    margin-top: 50px;
 }
 
 /* Stili CSS per il singolo blocco della città */
 .city {
     margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 20px;
     display: flex;
     flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata */
 }
 
 /* Stili CSS per il nome della città */
@@ -119,6 +125,7 @@ html {
     font-size: 24px;
     order: -1;
     flex: 1 0 100%;
+    text-align: center;
 }
 
 /* CSS del blocco di tutte le riguardanti la città */
@@ -139,30 +146,26 @@ html {
     grid-gap: 16px;
 }
 
-/* CSS di tutti gli elementi meteo.
-CAMBIARE E RENDERLO SPECIFICO PER OGNI TIPO
-AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
+/* CSS di tutti gli elementi meteo */
 .city-weather div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
-}
-
-.city-weather dov {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 5px;
-    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata */
 }
 
 /* CSS mappa città */
-.city-map {
+.city-map-container {
     flex: 1;
     z-index: 100;
+}
+
+.map {
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata */
 }
 
 .loading-spinner {
@@ -202,8 +205,6 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
     width: 1px; /* Larghezza della linea */
     height: 16px; /* Altezza della linea */
     background: white; /* Colore della linea */
-    border
-    : black; /* Rimuovi il bordo */
 }
 
 .city {
@@ -220,14 +221,10 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
     opacity: 35%;
 }
 
-.city img{
+.city img {
     overflow: hidden;
 }
 
-
-
-
-/*city.js*/
 .not-found-message {
     position: fixed;
     top: 50%;
@@ -238,28 +235,33 @@ AGGIUNGERE UN CLASS/ID AD OGNI BLOCCO */
     max-width: 400px; /* Larghezza massima per una migliore leggibilità */
 }
 
-
 #city-data {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
+
 .section {
     margin-bottom: 20px;
 }
+
 #map {
     height: 400px;
     width: 100%;
 }
+
 .chart {
     width: 100%;
     height: 300px;
 }
+
 .bar {
     fill: steelblue;
 }
+
 .bar:hover {
     fill: orange;
 }
+
 .axis-label {
     font-size: 14px;
     font-weight: bold;
